@@ -1,3 +1,5 @@
+import { PROFILE } from '@/constants/profile'
+import {SOCIAL_LINKS} from '@/constants/social'
 
 export default async function Home() {
 
@@ -7,28 +9,21 @@ export default async function Home() {
         <div className="container">
           <div className="intro">
             <img
-              src="/imgs/alsiam.png"
+              src="/imgs/manish.jpg"
               alt="Al Siam Profile"
               className="shadow-dark"
             />
-            <h1>Your Name</h1>
-            <p>Your expertise</p>
+            <h1>{`${PROFILE.first_name} ${PROFILE.middle_name} ${PROFILE.last_name}`}</h1>
+            <p>{PROFILE.profile}</p>
             <div className="social-links">
-              <a href="https://twitter.com/" target="_blank">
-                <i className="fa fa-twitter" />
-              </a>
-              <a href="https://facebook.com/" target="_blank">
-                <i className="fa fa-facebook" />
-              </a>
-              <a href="https://github.com/" target="_blank">
-                <i className="fa fa-github" />
-              </a>
-              <a href="https://instagram.com/" target="_blank">
-                <i className="fa fa-instagram" />
-              </a>
-              <a href="https://linkedin.com/in/" target="_blank">
-                <i className="fa fa-linkedin" />
-              </a>
+              {
+                SOCIAL_LINKS.map((link, index) => (
+                  <a href={link.href} target="_blank" key={index}>
+                  <i className={link.class_name} />
+                </a>
+                ))
+              }
+             
             </div>
           </div>
         </div>

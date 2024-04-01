@@ -123,6 +123,18 @@ select {
   left: 0;
   margin-top: 8px;
 }
+.row-res{
+  display: flex;
+  flex-direction: row;
+
+}
+
+@media (max-width: 800px) {
+  .row-res {
+    flex-direction: column;
+  }
+}
+
 .row {
   display: -ms-flexbox;
   display: flex;
@@ -435,6 +447,7 @@ select {
   line-height: 25px;
   color: #504e70;
   margin: 0;
+  text-align: justify;
 }
 .about .about-content .personal-info {
   -ms-flex: 0 0 60%;

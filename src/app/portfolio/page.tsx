@@ -1,6 +1,29 @@
+"use client"
 import type { NextPage } from "next";
+import { PORTFOLIOS } from "@/constants/portfolio";
+import { useState } from 'react';
 
-const Portfolio: NextPage = () => {
+const Portfolio: NextPage = () =>
+{
+  const [ projects, setProjects ] = useState(PORTFOLIOS);
+  const [activeMenu,setActiveMenu]=useState("all")
+
+  const menuClickHandler = (category:string) =>
+  {
+    if (category == "all")
+    {
+      setProjects(PORTFOLIOS);
+    } else
+    {
+      const filteredProjects=PORTFOLIOS.filter((project)=>project.category==category)
+      setProjects(filteredProjects);
+      
+    }
+    setActiveMenu(category);
+    
+  }
+  
+
   return (
     <div>
       <section className="portfolio section" id="portfolio">
@@ -12,114 +35,52 @@ const Portfolio: NextPage = () => {
           </div>
           <div className="row">
             <div className="portfolio-filter padd-15">
-              <button type="button" className="active" data-filter="all">
+              <button type="button" onClick={()=>menuClickHandler('all')} className={activeMenu=="all"?'active':''} data-filter="all">
                 All
               </button>
-              <button type="button" data-filter="graphics-design">
-                Graphics Design
+              <button type="button" onClick={()=>menuClickHandler('mern')} className={activeMenu=="mern"?'active':''} data-filter="mern">
+                MERN STACK
               </button>
-              <button type="button" data-filter="web-design">
-                Web Design
+              <button type="button" onClick={()=>menuClickHandler('reactjs')} className={activeMenu=="reactjs"?'active':''} data-filter="reactjs">
+                ReactJS
               </button>
-              <button type="button" data-filter="wordpress">
-                Wordpress
+              <button type="button" onClick={()=>menuClickHandler('flask')} className={activeMenu=="flask"?'active':''} data-filter="flask">
+                Flask
+              </button>
+              <button type="button" onClick={()=>menuClickHandler('nextjs')} className={activeMenu=="nextjs"?'active':''} data-filter="nextjs">
+                NextJS
+              </button>
+              <button type="button" onClick={()=>menuClickHandler('spring')} className={activeMenu=="spring"?'active':''} data-filter="spring">
+                Spring
               </button>
             </div>
           </div>
           <div className="row">
             {/* Portfolio Item */}
-            <div className="portfolio-item padd-15" data-category="web-design">
+
+            {
+              projects.map((project, index) => (
+                <div className="portfolio-item padd-15" data-category={project.category} key={index}>
+            <a href={project.href} target='_blank'>
               <div className="portfolio-item-inner shadow-dark">
                 <div className="portfolio-img">
-                  <img src="/imgs/portfolio/1.jpg" alt="portfolio" />
+                  
+                  <img src={project.cover} alt="portfolio" />
+                  
                 </div>
                 <div className="portfolio-info">
-                  <h4>Web Design</h4>
+                  <h4>{project.tech}</h4>
                   <div className="icon">
                     <i className="fa fa-search" />
                   </div>
                 </div>
-              </div>
+                </div>
+                </a>
             </div>
-            {/* Portfolio Item End*/}
-            {/* Portfolio Item */}
-            <div className="portfolio-item padd-15" data-category="web-design">
-              <div className="portfolio-item-inner shadow-dark">
-                <div className="portfolio-img">
-                  <img src="/imgs/portfolio/2.jpg" alt="portfolio" />
-                </div>
-                <div className="portfolio-info">
-                  <h4>Web Design</h4>
-                  <div className="icon">
-                    <i className="fa fa-search" />
-                  </div>
-                </div>
-              </div>
-            </div>
-            {/* Portfolio Item End*/}
-            {/* Portfolio Item */}
-            <div className="portfolio-item padd-15" data-category="web-design">
-              <div className="portfolio-item-inner shadow-dark">
-                <div className="portfolio-img">
-                  <img src="/imgs/portfolio/3.jpg" alt="portfolio" />
-                </div>
-                <div className="portfolio-info">
-                  <h4>Web Design</h4>
-                  <div className="icon">
-                    <i className="fa fa-search" />
-                  </div>
-                </div>
-              </div>
-            </div>
-            {/* Portfolio Item End*/}
-            {/* Portfolio Item */}
-            <div
-              className="portfolio-item padd-15"
-              data-category="graphics-design"
-            >
-              <div className="portfolio-item-inner shadow-dark">
-                <div className="portfolio-img">
-                  <img src="/imgs/portfolio/4.jpg" alt="portfolio" />
-                </div>
-                <div className="portfolio-info">
-                  <h4>Banner Design</h4>
-                  <div className="icon">
-                    <i className="fa fa-search" />
-                  </div>
-                </div>
-              </div>
-            </div>
-            {/* Portfolio Item End*/}
-            {/* Portfolio Item */}
-            <div className="portfolio-item padd-15" data-category="wordpress">
-              <div className="portfolio-item-inner shadow-dark">
-                <div className="portfolio-img">
-                  <img src="/imgs/portfolio/5.jpg" alt="portfolio" />
-                </div>
-                <div className="portfolio-info">
-                  <h4>Wordpress</h4>
-                  <div className="icon">
-                    <i className="fa fa-search" />
-                  </div>
-                </div>
-              </div>
-            </div>
-            {/* Portfolio Item End*/}
-            {/* Portfolio Item */}
-            <div className="portfolio-item padd-15" data-category="web-design">
-              <div className="portfolio-item-inner shadow-dark">
-                <div className="portfolio-img">
-                  <img src="/imgs/portfolio/6.jpg" alt="portfolio" />
-                </div>
-                <div className="portfolio-info">
-                  <h4>Web Design</h4>
-                  <div className="icon">
-                    <i className="fa fa-search" />
-                  </div>
-                </div>
-              </div>
-            </div>
-            {/* Portfolio Item End*/}
+              ))
+            }
+            
+            
           </div>
         </div>
       </section>
