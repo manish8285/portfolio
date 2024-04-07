@@ -37,5 +37,13 @@ export const PORTFOLIOS = [
         cover: "/imgs/portfolio/mediaConverter1.png",
         href:"#"
         
+    },
+    {
+        name:"Portfolio",
+        category: "nextjs",
+        tech: "Next JS",
+        cover: "/imgs/portfolio/portfolio.png",
+        href:"#"
+        
     }
 ]
