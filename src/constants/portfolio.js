@@ -27,7 +27,7 @@ export const PORTFOLIOS = [
         category: "reactjs",
         tech: "React JS",
         cover: "/imgs/portfolio/homeorx1.png",
-        href:"https://www.homeorx.in/"
+        href:"https://manish8285.github.io/multishop/"
         
     },
     {
@@ -44,6 +44,14 @@ export const PORTFOLIOS = [
         tech: "Next JS",
         cover: "/imgs/portfolio/portfolio.png",
         href:"#"
+        
+    },
+    {
+        name:"Hx Clinic",
+        category: "nextjs",
+        tech: "Next JS",
+        cover: "/imgs/portfolio/hx-site.png",
+        href:"https://www.homeorx.in/"
         
     }
 ]
